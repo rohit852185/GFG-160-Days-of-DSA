@@ -2,6 +2,8 @@ class Solution {
   public:
     // Function to count inversions in the array.
     int merge(int l,int m,int r,vector<int> &a){
+    // Your Code Here
+
         vector<int> b;
         int i=l,j=m+1;
         
@@ -52,7 +54,7 @@ class Solution {
     
     
     int inversionCount(vector<int> &arr) {
-        // Your Code Here
+        
         return mergeSort(0,arr.size()-1,arr);
         
     }
