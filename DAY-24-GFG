@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    // Function to search a given number in row-column sorted matrix.
+    bool searchMatrix(vector<vector<int>> &mat, int x) {
+        // code here
+        int n=mat.size();
+        int m=mat[0].size();
+        for(int i=0;i<n;i++)
+        {
+            int low=0,high=m-1;
+            while(low<=high)
+            {
+                int mid=(low+high)/2;
+                if(x>mat[i][mid])
+                    low=mid+1;
+                else if(x<mat[i][mid])
+                    high=mid-1;
+                else
+                    return true;
+            }
+            
+        }
+        return false;
+    }
+
+
+};
