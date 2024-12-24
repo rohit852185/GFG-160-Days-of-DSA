@@ -1,0 +1,43 @@
+class Solution {
+  public:
+  
+    bool possible(int mid, int k, vector<int>&arr){
+        int sum = 0;
+        int count = 1;
+        for(int i=0;i<arr.size();i++){
+            if(sum+arr[i]<=mid){
+                sum+=arr[i];
+            }else{
+                sum=arr[i];
+                if(arr[i] > mid){
+                    return false;
+                }
+                count++;
+            }
+        }
+        
+        return count<=k;
+    }
+  
+    int findPages(vector<int> &arr, int k) {
+        // code here
+        int high = accumulate(arr.begin(), arr.end(), 0);
+        int low = 0;
+        
+        if(k>arr.size()){
+            return -1;
+        }
+        
+        while(low<=high){
+            int mid = (low+high)/2;
+            
+            if(possible(mid, k, arr)){
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        
+        return low;
+    }
+};
